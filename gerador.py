@@ -176,59 +176,69 @@ class Jogo():
             self.acoes.append(f'5,{p.posicao}')
 
 
-            if rdm.randint(0,1) == 0:
+            if rdm.randint(0,2) == 0:
                 self.conhecidas.pop(0)
                 self.conhecidas.append(None)
             else:
                 self.reset()
             
 
-    def imprime_tupla(self):
+    def imprime_tupla(self,f):
         for p in self.pedras:
             if(p.oculta):
-                print('?;',end='')
+                print('?;',end='',file=f)
             else:
-                print(f'{p.posicao};',end='')
+                print(f'{p.posicao};',end='',file=f)
         
         
         for a in self.acoes:
-            print(f'{a};',end='')
+            print(f'{a};',end='',file=f)
         
         for p in range(6):
             if self.pedras[p].oculta:
                 if self.conhecidas.count(self.pedras[p]) > 0:
-                    # print(f' aq ({self.pedras[p]}) ',end='')
-                    print(f'{self.pedras[p].posicao};',end='')
+                    print(f'{self.pedras[p].posicao};',end='',file=f)
                 else:
-                    print('?;',end='')
+                    print('?;',end='',file=f)
             else:
-                print(f'{self.pedras[p].posicao};',end='')
+                print(f'{self.pedras[p].posicao};',end='',file=f)
     
         if self.pedras[6].oculta:
             if self.conhecidas.count(self.pedras[6]) > 0:
-                print(f'{self.pedras[6].posicao}')
+                print(f'{self.pedras[6].posicao}',file=f)
             else:
-                print('?')
+                print('?',file=f)
         else:
-            print(self.pedras[6].posicao)
+            print(self.pedras[6].posicao,file=f)
                 
 
 
-def imprime_cabecalho(n):
-    print('coroa;escudo;espada;bandeira;cavaleiro;martelo;balanca;',end='')
+def imprime_cabecalho(n:int,f):
+    print('coroa;escudo;espada;bandeira;cavaleiro;martelo;balanca;',end='',file=f)
     for a in range(1,n+1):
-        print(f'acao_{a};',end='')
-    print('final_coroa;final_escudo;final_espada;final_bandeira;final_cavaleiro;final_martelo;final_balanca')
+        print(f'acao_{a};',end='',file=f)
+    print('final_coroa;final_escudo;final_espada;final_bandeira;final_cavaleiro;final_martelo;final_balanca',file=f)
 
 if __name__=='__main__':
-    n = 3
-    # imprime_cabecalho(n)
+    n = int(input("Insira o valor de n: "))
+    try:
+        file = open(f"tellstone_{n}a.csv","r")
+        file.close()
+        file = open(f"tellstone_{n}a.csv","a")
+    except OSError:
+        file = open(f"tellstone_{n}a.csv","a")
+        imprime_cabecalho(n,file)
+    
     pedras = [Pedra('coroa'), Pedra('escudo'), Pedra('espada'), Pedra('bandeira'), 
         Pedra('cavaleiro'), Pedra('martelo'), Pedra('balanca')]
     
     jogo = Jogo(pedras,n)
-    jogo.imprime_tupla()
+    jogo.imprime_tupla(file)
     
-    for i in range(500):
+    qtd = int(input('Quantidade de dados gerados: '))
+    for i in range(qtd):
         jogo.realizar_acao()
-        jogo.imprime_tupla()
+        jogo.imprime_tupla(f=file)
+
+    file.close()
+    
