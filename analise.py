@@ -54,14 +54,10 @@ plt.show()
 # Contagem do total de ações realizadas (considerando o primeiro número de acao_3)
 acoes_realizadas = data[f'acao_{n}'].dropna().apply(lambda x: int(str(x).split(',')[0]) if str(x).split(',')[0].isdigit() else None).dropna()
 
-# Gráfico: Total de ações realizadas (distribuição por tipo de ação)
+# Gráfico: Total de ações realizadas
 plt.figure(figsize=(10, 6))
 sns.countplot(x=acoes_realizadas, palette='mako')
 plt.title('Distribuição de Ações Realizadas')
 plt.xlabel('Tipo de Ação')
 plt.ylabel('Frequência')
 plt.show()
-
-# Total geral de ações realizadas
-total_acoes_realizadas = len(acoes_realizadas)
-print(f'Total de ações realizadas: {total_acoes_realizadas}')

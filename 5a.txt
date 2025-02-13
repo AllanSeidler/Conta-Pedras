@@ -1,0 +1,138 @@
+numero de acoes: 
+Relatório de classificação para final_coroa:
+               precision    recall  f1-score   support
+
+          -2       0.31      0.45      0.36       169
+          -1       1.00      1.00      1.00      2442
+           1       0.96      0.83      0.89        65
+           2       0.95      0.75      0.84       162
+           3       0.86      0.68      0.76       256
+           4       0.70      0.80      0.75       472
+           5       0.69      0.68      0.69       246
+           6       0.95      0.69      0.79       127
+           7       0.96      0.76      0.85        62
+
+    accuracy                           0.89      4001
+   macro avg       0.82      0.74      0.77      4001
+weighted avg       0.90      0.89      0.89      4001
+
+Acurácia para final_coroa: 0.8870282429392652
+
+Relatório de classificação para final_escudo:
+               precision    recall  f1-score   support
+
+          -2       0.36      0.31      0.33       160
+          -1       1.00      1.00      1.00      2415
+           1       0.88      0.64      0.74        69
+           2       0.96      0.70      0.81       151
+           3       0.89      0.66      0.76       269
+           4       0.59      0.93      0.72       480
+           5       0.84      0.67      0.75       273
+           6       0.91      0.61      0.73       118
+           7       1.00      0.67      0.80        66
+
+    accuracy                           0.88      4001
+   macro avg       0.83      0.69      0.74      4001
+weighted avg       0.90      0.88      0.88      4001
+
+Acurácia para final_escudo: 0.8837790552361909
+
+Relatório de classificação para final_espada:
+               precision    recall  f1-score   support
+
+          -2       0.30      0.43      0.35       146
+          -1       1.00      1.00      1.00      2453
+           1       0.75      0.69      0.72        65
+           2       0.92      0.72      0.81       119
+           3       0.77      0.66      0.71       242
+           4       0.76      0.78      0.77       444
+           5       0.67      0.73      0.70       306
+           6       0.90      0.75      0.82       160
+           7       0.98      0.77      0.86        66
+
+    accuracy                           0.89      4001
+   macro avg       0.78      0.73      0.75      4001
+weighted avg       0.90      0.89      0.89      4001
+
+Acurácia para final_espada: 0.886528367908023
+
+Relatório de classificação para final_bandeira:
+               precision    recall  f1-score   support
+
+          -2       0.33      0.50      0.40       181
+          -1       1.00      1.00      1.00      2436
+           1       0.94      0.79      0.86        76
+           2       0.92      0.74      0.82       121
+           3       0.84      0.67      0.75       293
+           4       0.67      0.82      0.74       443
+           5       0.73      0.60      0.66       263
+           6       0.96      0.69      0.80       129
+           7       0.98      0.75      0.85        59
+
+    accuracy                           0.88      4001
+   macro avg       0.82      0.73      0.76      4001
+weighted avg       0.90      0.88      0.89      4001
+
+Acurácia para final_bandeira: 0.8817795551112222
+
+Relatório de classificação para final_cavaleiro:
+               precision    recall  f1-score   support
+
+          -2       0.32      0.59      0.41       161
+          -1       1.00      1.00      1.00      2497
+           1       0.84      0.62      0.71        60
+           2       0.86      0.73      0.79       147
+           3       0.89      0.68      0.77       250
+           4       0.74      0.81      0.77       473
+           5       0.82      0.69      0.75       252
+           6       0.96      0.71      0.82       111
+           7       1.00      0.66      0.80        50
+
+    accuracy                           0.89      4001
+   macro avg       0.83      0.72      0.76      4001
+weighted avg       0.92      0.89      0.90      4001
+
+Acurácia para final_cavaleiro: 0.8935266183454137
+
+Relatório de classificação para final_martelo:
+               precision    recall  f1-score   support
+
+          -2       0.35      0.50      0.41       187
+          -1       1.00      1.00      1.00      2365
+           1       0.92      0.79      0.85        71
+           2       0.95      0.65      0.77       144
+           3       0.76      0.69      0.73       261
+           4       0.68      0.83      0.75       502
+           5       0.86      0.70      0.77       265
+           6       0.99      0.73      0.84       139
+           7       0.98      0.67      0.80        67
+
+    accuracy                           0.88      4001
+   macro avg       0.83      0.73      0.77      4001
+weighted avg       0.90      0.88      0.89      4001
+
+Acurácia para final_martelo: 0.8845288677830543
+
+Relatório de classificação para final_balanca:
+               precision    recall  f1-score   support
+
+          -2       0.29      0.57      0.38       160
+          -1       1.00      1.00      1.00      2451
+           1       0.84      0.76      0.80        49
+           2       0.97      0.74      0.84       151
+           3       0.80      0.69      0.75       278
+           4       0.75      0.79      0.77       463
+           5       0.84      0.67      0.74       260
+           6       0.90      0.68      0.77       121
+           7       1.00      0.69      0.82        68
+
+    accuracy                           0.89      4001
+   macro avg       0.82      0.73      0.76      4001
+weighted avg       0.91      0.89      0.90      4001
+
+Acurácia para final_balanca: 0.8882779305173707
+Acurácia média: 0.8864926625486486
+
+
+
+> 

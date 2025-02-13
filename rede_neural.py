@@ -6,11 +6,9 @@ from sklearn.multioutput import MultiOutputClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# Codificar as ações como strings únicas para simplificação
 def codificar_acao(acao):
     return acao if pd.notna(acao) else 'NA'
 
-# Função para transformar as colunas de posições ("F" -> -1, "?" -> -2, número -> int)
 def transformar_posicao(valor):
     if valor == 'F':
         return -1
@@ -20,8 +18,6 @@ def transformar_posicao(valor):
         return int(valor)
 
 def treina_rn(data, n):
-
-    # Aplicar a transformação nas colunas de posição
     colunas_pedras = ['coroa', 'escudo', 'espada', 'bandeira', 'cavaleiro', 'martelo', 'balanca']
     for coluna in colunas_pedras:
         data[coluna] = data[coluna].apply(transformar_posicao)
@@ -34,32 +30,25 @@ def treina_rn(data, n):
     for coluna in colunas_acoes:
         data[coluna] = data[coluna].apply(codificar_acao)
 
-    # Preparar os dados para o modelo
     X = data[colunas_pedras + colunas_acoes]
     y = data[['final_coroa', 'final_escudo', 'final_espada', 'final_bandeira', 'final_cavaleiro', 'final_martelo', 'final_balanca']].map(transformar_posicao)
 
-    # Codificar as ações usando LabelEncoder
     le = LabelEncoder()
     for coluna in colunas_acoes:
         X.loc[:, coluna] = le.fit_transform(X[coluna])
 
-    # Dividir o dataset em treino e teste
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
 
-    # Normalizar os dados de entrada
-    scaler = StandardScaler()
+    scaler = StandardScaler() 
     X_train[colunas_pedras] = scaler.fit_transform(X_train[colunas_pedras])
     X_test[colunas_pedras] = scaler.transform(X_test[colunas_pedras])
 
 
-
-    # Criar e treinar a rede neural com MultiOutputClassifier
     mlp = MLPClassifier(hidden_layer_sizes=(28,28), activation='tanh', solver='adam', max_iter=2500, random_state=1)
     multi_target_mlp = MultiOutputClassifier(mlp)
     multi_target_mlp.fit(X_train, y_train)
 
-    # Fazer previsões e avaliar o modelo
-    y_pred = multi_target_mlp.predict(X_test)
+    y_pred = multi_target_mlp.predict(X_test) # Faz previsões
 
     # Avaliar a acurácia para cada coluna de saída
     media = 0
@@ -73,20 +62,14 @@ def treina_rn(data, n):
 
 
 def realiza_teste(entrada, colunas_pedras, colunas_acoes, le, scaler, multi_target_mlp):
-    # Exemplo de entrada para teste (substitua pelos valores desejados)
-
-
-    # Converter os valores da nova entrada para o formato correto
     entrada_transformada = pd.DataFrame([entrada])
     for coluna in colunas_pedras:
         entrada_transformada[coluna] = entrada_transformada[coluna].apply(transformar_posicao)
     for coluna in colunas_acoes:
         entrada_transformada[coluna] = le.transform(entrada_transformada[coluna])
 
-    # Aplicar a mesma normalização
     entrada_transformada[colunas_pedras] = scaler.transform(entrada_transformada[colunas_pedras])
 
-    # Fazer a previsão
     predicao = multi_target_mlp.predict(entrada_transformada)
     print("Previsão para a nova entrada:", predicao)
 
