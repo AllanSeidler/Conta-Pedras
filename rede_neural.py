@@ -88,7 +88,7 @@ def realiza_teste(entrada, colunas_pedras, colunas_acoes, le, scaler, multi_targ
 
     # Fazer a previsão
     predicao = multi_target_mlp.predict(entrada_transformada)
-    # print("entrada transformada: ", entrada_transformada)
+    print("entrada transformada: ", entrada_transformada)
     print("Previsão para a nova entrada:", predicao)
 
 

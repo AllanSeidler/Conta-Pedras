@@ -49,3 +49,18 @@ sns.barplot(x=['Ocultas na Saída Final', 'Conhecidas na Saída Final'], y=[tota
 plt.title('Total de Pedras Ocultas vs Conhecidas na Saída Final')
 plt.ylabel('Frequência')
 plt.show()
+
+# Contagem do total de ações realizadas (considerando o primeiro número de acao_3)
+acoes_realizadas = data['acao_3'].dropna().apply(lambda x: int(str(x).split(',')[0]) if str(x).split(',')[0].isdigit() else None).dropna()
+
+# Gráfico: Total de ações realizadas (distribuição por tipo de ação)
+plt.figure(figsize=(10, 6))
+sns.countplot(x=acoes_realizadas, palette='mako')
+plt.title('Distribuição de Ações Realizadas (Primeiro Número de acao_3)')
+plt.xlabel('Tipo de Ação')
+plt.ylabel('Frequência')
+plt.show()
+
+# Total geral de ações realizadas
+total_acoes_realizadas = len(acoes_realizadas)
+print(f'Total de ações realizadas: {total_acoes_realizadas}')
