@@ -65,7 +65,7 @@ def treina_rn(data, n):
     media = 0
     for i, coluna in enumerate(y.columns):
         media+=accuracy_score(y_test[coluna], y_pred[:, i])
-        # print(f"\nRelatório de classificação para {coluna}:\n", classification_report(y_test[coluna], y_pred[:, i],zero_division=0))
+        print(f"\nRelatório de classificação para {coluna}:\n", classification_report(y_test[coluna], y_pred[:, i],zero_division=0))
         print(f"Acurácia para {coluna}: {accuracy_score(y_test[coluna], y_pred[:, i])}")
     print(f'Acurácia média: {media/7.0}')
 
@@ -88,7 +88,6 @@ def realiza_teste(entrada, colunas_pedras, colunas_acoes, le, scaler, multi_targ
 
     # Fazer a previsão
     predicao = multi_target_mlp.predict(entrada_transformada)
-    print("entrada transformada: ", entrada_transformada)
     print("Previsão para a nova entrada:", predicao)
 
 
