@@ -58,6 +58,19 @@ def treina_rn(data, n):
         print(f"Acurácia para {coluna}: {accuracy_score(y_test[coluna], y_pred[:, i])}")
     print(f'Acurácia média: {media/7.0}')
 
+    # Cria um DataFrame com os valores reais e previstos para cada coluna de saída
+    df_resultados = pd.DataFrame()
+
+    # Para cada coluna de saída, salve os valores reais e os valores preditos
+    for i, coluna in enumerate(y.columns):
+        df_resultados[f'{coluna}_true'] = y_test[coluna].values
+        df_resultados[f'{coluna}_pred'] = y_pred[:, i]
+
+    # Salva o DataFrame em um arquivo CSV
+    df_resultados.to_csv("predicoes_vs_reais.csv", index=False)
+    print("Os valores reais e preditos foram salvos em 'predicoes_vs_reais.csv'.")
+
+
     return colunas_pedras, colunas_acoes, le, scaler, multi_target_mlp
 
 
