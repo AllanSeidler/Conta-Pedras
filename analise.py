@@ -6,8 +6,9 @@ import seaborn as sns
 sns.set(style="whitegrid")
 plt.rcParams['figure.figsize'] = (12, 6)
 
+n = int(input('Insira o numero de acoes: '))
 # Carregar o dataset
-data = pd.read_csv('tellstone_3a.csv', sep=';')
+data = pd.read_csv(f'tellstone_{n}a.csv', sep=';')
 
 # Listas de colunas
 colunas_pedras = ['coroa', 'escudo', 'espada', 'bandeira', 'cavaleiro', 'martelo', 'balanca']
@@ -27,8 +28,8 @@ for i, row in data.iterrows():
 
 # Gráfico: Pedras ocultas reveladas vs desconhecidas
 plt.figure(figsize=(8, 5))
-sns.barplot(x=['Ocultas Reveladas', 'Ocultas Desconhecidas'], y=[ocultas_reveladas, ocultas_desconhecidas], palette='pastel')
-plt.title('Pedras Ocultas Reveladas vs Desconhecidas')
+sns.barplot(x=['Ocultas Conhecidas', 'Ocultas Desconhecidas'], y=[ocultas_reveladas, ocultas_desconhecidas], palette='pastel')
+plt.title('Pedras Ocultas Conhecidas vs Desconhecidas')
 plt.ylabel('Frequência')
 plt.show()
 
@@ -45,18 +46,18 @@ for i, row in data.iterrows():
 
 # Gráfico: Total de pedras ocultas vs conhecidas na saída final
 plt.figure(figsize=(8, 5))
-sns.barplot(x=['Ocultas na Saída Final', 'Conhecidas na Saída Final'], y=[total_ocultas_saida, total_conhecidas_saida], palette='coolwarm')
-plt.title('Total de Pedras Ocultas vs Conhecidas na Saída Final')
+sns.barplot(x=['Desconhecidas na Saída Final', 'Conhecidas na Saída Final'], y=[total_ocultas_saida, total_conhecidas_saida], palette='coolwarm')
+plt.title('Total de Pedras Desconhecidas vs Conhecidas na Saída Final')
 plt.ylabel('Frequência')
 plt.show()
 
 # Contagem do total de ações realizadas (considerando o primeiro número de acao_3)
-acoes_realizadas = data['acao_3'].dropna().apply(lambda x: int(str(x).split(',')[0]) if str(x).split(',')[0].isdigit() else None).dropna()
+acoes_realizadas = data[f'acao_{n}'].dropna().apply(lambda x: int(str(x).split(',')[0]) if str(x).split(',')[0].isdigit() else None).dropna()
 
 # Gráfico: Total de ações realizadas (distribuição por tipo de ação)
 plt.figure(figsize=(10, 6))
 sns.countplot(x=acoes_realizadas, palette='mako')
-plt.title('Distribuição de Ações Realizadas (Primeiro Número de acao_3)')
+plt.title('Distribuição de Ações Realizadas')
 plt.xlabel('Tipo de Ação')
 plt.ylabel('Frequência')
 plt.show()
