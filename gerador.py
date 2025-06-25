@@ -17,13 +17,12 @@ conteudo da entrada:
     - boast I: 7
     - boast II: 8
     - boast III: 9
-
 '''
 class Pedra():
     
     def __init__(self, nome):
         self.nome = nome
-        self.posicao = 'F' # F = 70, ? = 63
+        self.posicao = 'F'
         self.oculta = False
 
     def __str__(self):
